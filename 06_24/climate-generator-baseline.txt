@@ -1,0 +1,20 @@
+LandisData "Climate Config"				
+		
+ClimateTimeSeries			Daily_RandomYears
+ClimateFile				geoknife_output_00_18.csv
+ClimateFileFormat			Daily_Temp-K_Precip-mmDay
+
+SpinUpClimateTimeSeries			Daily_AverageAllYears
+SpinUpClimateFile			geoknife_output_00_18.csv
+SpinUpClimateFileFormat			Daily_Temp-K_Precip-mmDay
+
+UsingFireClimate                        yes
+FineFuelMoistureCode          85
+DuffMoistureCode                 6
+DroughtCode                              15
+FirstDayFire                 31
+LastDayFire                             334
+
+SpringStart				30
+WinterStart				320
+
