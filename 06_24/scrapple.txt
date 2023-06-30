@@ -1,0 +1,123 @@
+	LandisData  "SCRAPPLE"
+
+>> Note:  All inputs are provided as examples only.  They are not intended to serve as default values.
+>>     Parameter                      Value
+>> ----------------------------       -------
+Timestep                            1 << SCRPPLE Only runs at a one year time step 
+>>Species level characteristics
+
+Species_CSV_File	SCRPPLE_spp_zachary_bark.csv
+
+>>>>>> Ignition maps <<<<<
+
+AccidentalIgnitionsMap		./SCRPPLE_Inputs/ha_ign_plus10.tif 	
+LightningIgnitionsMap  		./SCRPPLE_Inputs/light_ign_minus1.tif 	
+RxIgnitionsMap			./SCRPPLE_Inputs/RxIgnitionsMap.tif 		<<make map value 1
+DynamicRxIgnitionMaps << Optional these initiate new probability surfaces at set time steps. 
+
+
+>>>>>> Suppression maps <<<<<<<<<<
+
+AccidentalSuppressionMap	./SCRPPLE_Inputs/AccidentalSuppressionMapv3.tif
+LightningSuppressionMap		./SCRPPLE_Inputs/LightningSuppressionMapv3.tif 
+RxSuppressionMap		./SCRPPLE_Inputs/RxSuppressionMap.tif		<<make map value 0
+
+>> Maps used in spread, and mortality calculations<<
+
+GroundSlopeMap		./SCRPPLE_Inputs/slope_100m_perc_fix.tif
+UphillSlopeAzimuthMap	./SCRPPLE_Inputs/uphill_slope_azimuth_0.tif
+ClayMap			./SCRPPLE_Inputs/ClayMap.tif <<make map value 1 we dont need
+
+>>>>>>>>>>>>>>>>>Ignitions!<<<<<<<<<<<<<<<<<<<<<<<<<<
+>>>>>>>>>>>>>>>>Put variables here in Ex 1. <<<<<<<<<<<<<<<<<<<
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+>>>>>>>> Count model<<<<<<<<
+LightningIgnitionsB0 -5.79616
+LightningIgnitionsB1  0.16850
+AccidentalIgnitionsB0   -1.27250
+AccidentalIgnitionsB1   0.049388
+IgnitionDistribution ZeroInflatedPoisson << Poisson or ZeroInflatedPoisson
+
+>> If ZeroInflatedPoisson, you must include the following, otherwise comment out these inputs
+
+>>> Zero inflated model <<<<<<<
+LightningIgnitionsBinomialB0 2.63789
+LightningIgnitionsBinomialB1 0.02036
+AccidentalIgnitionsBinomialB0 3.15083
+AccidentalIgnitionsBinomialB1 -0.09067
+
+>> Determines the scaling of the fine fuel 
+MaximumFineFuels 500.0 << keep for now
+
+>> Prescribed Fire Parameters
+
+MaximumRxWindSpeed 80.0
+MaximumRxFireWeatherIndex 80.0  << Optional
+MinimumRxFireWeatherIndex 1.0   << Optional
+MaximumRxTemperature 35.0	<< Optional
+>> MinimumRxRelativeHumidity 22.0	<< Optional
+MaximumRxFireIntensity 1
+NumberRxAnnualFires 0
+NumberRxDailyFires 0
+FirstDayRxFires 2
+LastDayRxFires 300
+TargetRxSize 40
+>> RxZonesMap fire-zones.gis  << Optional
+
+>>>>>>Spread parameters<<<<<<<<<<<<<
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+>>>>>Maximum Daily Spread<<<<<<<<<<<<
+
+MaximumSpreadAreaB0	-1933.82
+MaximumSpreadAreaB1	76.04 <<-3 <<FWI
+MaximumSpreadAreaB2	344.06  <<-2.5  <<effective wind speed
+
+>>>>>Probability of daily intercellular spread<<<<<<<<<
+
+SpreadProbabilityB0 -0.0714378 << Intercept
+SpreadProbabilityB1 0.0  <<FWI not using it in our spread since it didnt effect spread
+SpreadProbabilityB2  1.6033131 << relativized fine fuels. 
+SpreadProbabilityB3 0.0019717 << effective wind speed. 
+
+>>>>>>>>>>>>>>>Mortality Parameters<<<<<<<<<<<<<<<<<<<<<<
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+>>>>>>> Site level mortality<<<<<<<<<<<<<<<<<<<<<<<<<<<
+
+SiteMortalityB0  .01<< Intercept
+SiteMortalityB1   0.0 << The parameter fit for site level clay % in Soil.
+SiteMortalityB2  0.0  << The parameter fit for site level previous years annual ET. 
+SiteMortalityB3 0.00017  << The parameter fit for site level Effective Windspeed. 
+SiteMortalityB4  0.0 << The parameter fit for site level Climatic Water Deficit (PET-AET). 
+SiteMortalityB5 0.00001  << The parameter fit for fine fuels (a percentage of the maximum, from above). 
+SiteMortalityB6 0.0000005  << The parameter fit for ladder fuels. 
+
+>>>>>>>>> Cohort level mortality <<<<<<<<<<<<<<<<<<<<<<<
+CohortMortalityB0 4 << Intercept
+CohortMortalityB1 -7 << The parameter fit for the relationship between bark thickness and cohort mortality.
+CohortMortalityB2  0.0095 << The parameter fit for the relationship between site mortality and cohort mortality. 
+
+>>>>>>>>>>>>>Misc<<<<<<<<<<<<<<<<<<<<<
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+<< taking from https://github.com/LANDIS-II-Foundation/Project-Klamath-2021/blob/main/Inputs/Base%20Inputs/SCRAPPLE_Klamath.txt
+LadderFuelMaxAge 28
+
+LadderFuelSpeciesList 
+<< need something here
+103
+116
+81
+122
+202
+
+
+>>>>>> Suppression <<<<<<
+SuppressionMaxWindSpeed 100
+Suppression_CSV_File ./SCRPPLE_Inputs/suppression_inputv4.csv
+
+
+>>>>>>> Dead wood table <<<<<<<<
+DeadWoodTable
+

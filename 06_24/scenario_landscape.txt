@@ -1,0 +1,46 @@
+LandisData  Scenario
+
+
+Duration  18
+
+Species   species_props.txt
+
+
+Ecoregions      ecoregions.txt
+EcoregionsMap   ecoregionsmasked.tif
+
+
+CellLength  100 << meters
+
+
+
+>> Succession Extension     Initialization File
+
+>> --------------------     -------------------
+  
+"NECN Succession"     NECN-succession.txt
+
+
+
+
+>> Disturbance Extensions   Initialization File
+
+>> ----------------------   -------------------
+
+"SCRAPPLE"		    scrapple.txt
+
+DisturbancesRandomOrder  no
+
+
+
+
+>> Other Extensions         Initialization File
+
+>> ----------------         -------------------
+	
+>> "Output Biomass"	    output-biomass.txt
+
+
+
+
+RandomNumberSeed  4,357
