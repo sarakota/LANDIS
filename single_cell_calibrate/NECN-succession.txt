@@ -77,7 +77,7 @@ SpeciesParameters ./NECN_Inputs/NECN_Spp_Table_USE.csv
 				
 
 
-FunctionalGroupParameters ./NECN_Inputs/NECN_Functional_Table.csv
+FunctionalGroupParameters ./NECN_Inputs/NECN_Functional_Table_USE.csv
 	
 
 
