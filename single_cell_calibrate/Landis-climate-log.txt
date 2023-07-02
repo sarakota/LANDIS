@@ -1,0 +1,9 @@
+   Loading spin-up weather data from file 100m_weather_future_sub.csv ...
+   Converting raw data from text file: 100m_weather_future_sub.csv, Format=daily_temp-k_precip-mmday, Temporal=Daily.
+   Loading future weather data from file 100m_weather_hist_sub.csv ...
+   Converting raw data from text file: 100m_weather_hist_sub.csv, Format=daily_temp-k_precip-mmday, Temporal=Daily.
+Core.StartTime = 0, Core.EndTime = 2.
+  Completed calculations for Future_Climate using Daily_RandomYear. Ecoregion = eco7, SimulatedYear = 1950, actualYearUsed=2005.
+  AnnualClimate_Daily: Daily_RandomYear: timeStep = 1950, actualYear = 2005, phase = Future_Climate.
+  Completed calculations for Future_Climate using Daily_RandomYear. Ecoregion = eco7, SimulatedYear = 1951, actualYearUsed=1959.
+  AnnualClimate_Daily: Daily_RandomYear: timeStep = 1951, actualYear = 1959, phase = Future_Climate.
